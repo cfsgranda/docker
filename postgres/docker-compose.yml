@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  dev-postgres:
+    image: postgres
+    ports:
+     - "127.0.0.1:5432:5432"
+    volumes:
+     - ./postgresql_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 'SuperSecret123'
+  dev-pgadmin:
+    image: dpage/pgadmin4
+    ports: 
+      - "127.0.0.1:8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'dev@devel.local'
+      PGADMIN_DEFAULT_PASSWORD: 'SuperSecret123'
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+ 
